@@ -78,3 +78,74 @@ $ ./3.sh "123"
 +-----+
 
 ```
+
+# Задача 4
+Написать программу для вывода всех идентификаторов (по правилам C/C++ или Java) в файле (без повторений).
+## Код
+```bash
+#!/bin/bash
+
+file="$1"
+
+id=$(grep -o -E '\b[a-zA-Z]*\b' "$file" | sort -u)
+
+```
+```bash
+dimap@dima5778 MINGW64 ~/downloads grep -oE '\b[a-zA-Z_][a-zA-Z0-9_]*\b' hello.c | grep -vE '\b(int|void|return|if|else|for|while|include|stdio)\b' | sort | uniq
+h
+hello
+main
+n
+printf
+world
+```
+
+# Задача 5
+Написать программу для регистрации пользовательской команды (правильные права доступа и копирование в /usr/local/bin).
+## Код
+```bash
+#!/bin/bash
+
+file=$1
+
+chmod 755 "./$file"
+
+sudo cp "$file" /usr/local/bin/
+```
+
+Например, пусть программа называется reg:
+```bash
+dimap@dima5778 MINGW64 ~/downloads ./reg.sh banner.sh
+dimap@dima5778 MINGW64 ~/downloads ls /usr/local/bin
+banner.sh  ngrok
+```
+
+# Задача 6
+Написать программу для проверки наличия комментария в первой строке файлов с расширением c, js и py.
+## Код
+```bash
+#!/bin/bash
+
+# Проход по всем файлам с расширениями .c, .js, .py
+for file in $(find . -type f \( -name "*.c" -o -name "*.js" -o -name "*.py" \)); do
+    # Чтение первой строки файла
+    first_line=$(head -n 1 "$file")
+    
+    # Проверка, начинается ли строка с комментария (для C, JS и Python)
+    if [[ "$file" == *.c || "$file" == *.js ]]; then
+        if [[ "$first_line" =~ ^(//|/\*) ]]; then
+            echo "Файл $file содержит комментарий в первой строке."
+        else
+            echo "Файл $file не содержит комментарий в первой строке."
+        fi
+    elif [[ "$file" == *.py ]]; then
+        if [[ "$first_line" =~ ^# ]]; then
+            echo "Файл $file содержит комментарий в первой строке."
+        else
+            echo "Файл $file не содержит комментарий в первой строке."
+        fi
+    fi
+done
+
+```
+
