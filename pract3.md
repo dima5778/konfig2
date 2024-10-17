@@ -23,9 +23,9 @@
       age: 18
     },
     {
-      name: "Ваше имя",     // Здесь добавьте свои данные
-      group: "ИКБО-6-20",
-      age: 20
+      name: "Поспелов Д.Д.",     
+      group: "ИКБО-23-20",
+      age: 18
     }
   ],
 
@@ -51,7 +51,7 @@ let students =
       [ { name = "Иванов И.И.", group = makeGroup 4, age = 19 }
       , { name = "Петров П.П.", group = makeGroup 5, age = 18 }
       , { name = "Сидоров С.С.", group = makeGroup 5, age = 18 }
-      , { name = "Ваше имя", group = makeGroup 6, age = 20 }  -- Добавьте свои данные
+      , { name = "Поспелов Д.Д.", group = makeGroup 23, age = 18 }  
       ]
 
 -- Предмет
@@ -59,4 +59,14 @@ let subject = "Конфигурационное управление"
 
 -- Финальная структура JSON
 in { groups = groups, students = students, subject = subject }
+```
+## Задание 3
+Просто добавляем BNF для языка едениц и нулей
+```bash
+BNF = '''
+S = "10" | "100" | "11" | "101101" | "000"
+'''
+
+for i in range(10):
+    print(generate_phrase(parse_bnf(BNF), 'S'))
 ```
