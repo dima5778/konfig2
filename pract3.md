@@ -147,6 +147,8 @@ B = & | V
 
 for i in range(10):
     print(generate_phrase(parse_bnf(BNF), 'E'))
-'''
-![image](https://github.com/user-attachments/assets/200e8694-0179-41e9-83d9-58902c332025)
+```
+![image](https://github.com/user-attachments/assets/c2a351b8-b314-4388-b642-728c6b190b7b)
+
+
 
