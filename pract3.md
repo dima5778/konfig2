@@ -84,7 +84,7 @@ local Person(age, group, name) = {
 2)Проверяем устоновку dhall-to-json --help
 3)Создаём файл с содержимим 
 4) dhall-to-json --file Zd1.dhall > Zd1_2.json
-5)Смотрим содержимое cat Pr3_2zd.json
+5)Смотрим содержимое cat Zd1_2.json
 ```bash
 let Student = { name : Text, group : Text, age : Natural }
 
