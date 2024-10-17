@@ -201,6 +201,7 @@ F = P B P | U P | P
 P = x | y | (x) | (y)
 U = ~
 B = & | V
+'''
 
 for i in range(10):
     print(generate_phrase(parse_bnf(BNF), 'E'))
