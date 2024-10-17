@@ -70,3 +70,19 @@ S = "10" | "100" | "11" | "101101" | "000"
 for i in range(10):
     print(generate_phrase(parse_bnf(BNF), 'S'))
 ```
+
+## Задание 4
+Тоже самое только пустое значение в скобках обозначаю буквой а
+```bash
+BNF = '''
+S = A | B | C
+A = "{" S "}"
+B = "(" S ")"
+C = a
+'''
+
+for i in range(10):
+    print(generate_phrase(parse_bnf(BNF), 'S'))
+```
+
+## Задание 5
