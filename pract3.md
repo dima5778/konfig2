@@ -76,8 +76,8 @@ for i in range(10):
 ```bash
 BNF = '''
 S = A | B | C
-A = "{" S "}"
-B = "(" S ")"
+A = { S }
+B = ( S )
 C = a
 '''
 
