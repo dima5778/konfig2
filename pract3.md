@@ -2,7 +2,7 @@
 1)Устонавливаю jsonnet в git bash с помощью choco install jsonnet перезахожу в него
 2)Создаю файл Zd1.jsonnet
 3)Использую  команду jsonnet Zd1.jsonnet -o Zd1_1.json
-4) Посмотреть файл cat Pr3_1zd.json
+4) Посмотреть файл cat Zd1_1.json
 ```bash
 local arr = std.makeArray(25, function(x) "ИKБO-" + (x + 1) + "-23");
 
