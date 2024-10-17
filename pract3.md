@@ -3,7 +3,6 @@
 2)Создаю файл Zd1.jsonnet
 3)Использую  команду jsonnet Zd1.jsonnet -o Zd1_1.json
 4) Посмотреть файл cat Pr3_1zd.json
-Вывод
 ```bash
 local groups = [
   "ИКБО-1-24",
