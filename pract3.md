@@ -86,25 +86,33 @@ local Person(age, group, name) = {
 4) dhall-to-json --file Zd1.dhall > Zd1_2.json
 5)Смотрим содержимое cat Zd1_2.json
 ```bash
-let Student = { name : Text, group : Text, age : Natural }
+let makeGroup = \(i : Natural) -> "ИКБО-${Natural/show i}-23"
 
-let makeGroup = \(i : Natural) -> "ИКБО-${Natural/show i}-20"
-
+-- Генерация списка групп от 1 до 25
 let groups =
       List/fold
         Natural
-        (List/range 1 24)
+        (List/range 1 25)
         (List Text)
         (\(i : Natural) (acc : List Text) -> acc # [makeGroup i])
         ([] : List Text)
 
+-- Тип данных для студента
+let Student = { age : Natural, group : Text, name : Text }
+
+-- Функция для создания студента
+let makePerson = \(age : Natural) -> \(groupIndex : Natural) -> \(name : Text) ->
+  { age = age, group = List/index Text groups (groupIndex - 1), name = name }
+
+-- Список студентов
 let students =
-      [ { name = "Иванов И.И.", group = makeGroup 4, age = 19 }
-      , { name = "Петров П.П.", group = makeGroup 5, age = 18 }
-      , { name = "Сидоров С.С.", group = makeGroup 5, age = 18 }
-      , { name = "Поспелов Д.Д.", group = makeGroup 23, age = 18 }
+      [ makePerson 19 4 "Иванов И.И."
+      , makePerson 18 5 "Петров П.П."
+      , makePerson 18 5 "Сидоров С.С."
+      , makePerson 18 23 "Поспелов Д.Д."
       ]
 
+-- Предмет
 let subject = "Конфигурационное управление"
 
 in { groups = groups, students = students, subject = subject }
@@ -113,54 +121,53 @@ in { groups = groups, students = students, subject = subject }
 ```bash
 {
   "groups": [
-    "ИКБО-1-23", 
-    "ИКБО-2-23", 
-    "ИКБО-3-23", 
+    "ИКБО-1-23",
+    "ИКБО-2-23",
+    "ИКБО-3-23",
     "ИКБО-4-23",
-    "ИКБО-5-23", 
+    "ИКБО-5-23",
     "ИКБО-6-23", 
     "ИКБО-7-23",
     "ИКБО-8-23",
-    "ИКБО-9-23", 
-    "ИКБО-10-23", 
-    "ИКБО-11-23", 
-    "ИКБО-12-23",
+    "ИКБО-9-23",
+    "ИКБО-10-23",
+    "ИКБО-11-23",
+    "ИКБО-12-23", 
     "ИКБО-13-23",
-    "ИКБО-14-23", 
-    "ИКБО-15-23", 
+    "ИКБО-14-23",
+    "ИКБО-15-23",
     "ИКБО-16-23",
     "ИКБО-17-23",
-    "ИКБО-18-23",
-    "ИКБО-19-23", 
+    "ИКБО-18-23", 
+    "ИКБО-19-23",
     "ИКБО-20-23",
     "ИКБО-21-23",
     "ИКБО-22-23",
-    "ИКБО-23-23", 
-    "ИКБО-24-23"
-  ]
+    "ИКБО-23-23",
+    "ИКБО-24-23", 
+    "ИКБО-25-23"
+  ],
   "students": [
-    {
-      "name": "Иванов И.И.",
+    { "age": 19,
       "group": "ИКБО-4-23",
-      "age": 19
+      "name": "Иванов И.И."
     },
-    {
-      "name": "Петров П.П.",
+    { "age": 18,
       "group": "ИКБО-5-23",
-      "age": 18
+      "name": "Петров П.П."
     },
-    {
-      "name": "Сидоров С.С.",
+    { "age": 18,
       "group": "ИКБО-5-23",
-      "age": 18
+      "name": "Сидоров С.С."
     },
-    {
-      "name": "Поспелов Д.Д.",
+    { "age": 18,
       "group": "ИКБО-23-23",
-      "age": 18
+      "name": "Поспелов Д.Д."
     }
   ],
   "subject": "Конфигурационное управление"
+}
+
 }
 ```
 
