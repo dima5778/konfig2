@@ -106,10 +106,7 @@ local students = [
   students: students,
 }
 ```
-Вывод
-```bash
 
-```
 ## Задание 3
 Просто добавляем BNF для языка едениц и нулей
 ```bash
