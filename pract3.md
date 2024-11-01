@@ -23,7 +23,6 @@ local Person(age, group, name) = {
   subject: "",
 }
 ```
-Вывод
 ![image](https://github.com/user-attachments/assets/573b2b92-c5ff-4ba6-b844-8266e0a4eafa)
 ![image](https://github.com/user-attachments/assets/ef74a768-b547-48c9-b0ca-75f582f06572)
 ![image](https://github.com/user-attachments/assets/2c426e74-8b45-4675-9082-64cfd7898d0b)
