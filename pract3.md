@@ -58,7 +58,6 @@ in  { groups =
     , subject = "Конфигурационное управление"
  }
 ```
-Вывод
 ![image](https://github.com/user-attachments/assets/333386f7-c6d9-4df6-9a68-05ff81a4bc80)
 ![image](https://github.com/user-attachments/assets/50e4e543-5f50-4041-aeae-7f5a7693b0c0)
 ![image](https://github.com/user-attachments/assets/4b1861e1-da02-48b6-826b-d1dcf295a52b)
