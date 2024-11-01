@@ -38,90 +38,33 @@ local Person(age, group, name) = {
 4) dhall-to-json --file Zd1.dhall > Zd1_2.json
 5)Смотрим содержимое cat Zd1_2.json
 ```bash
-let makeGroup = \(i : Natural) -> "ИКБО-${Natural/show i}-23"
+let Prelude = https://prelude.dhall-lang.org/v20.2.0/package.dhall
+let generateGroup = λ(i : Natural) → "ИКБО-" ++ Prelude.Natural.show i ++ "-20"
 
--- Генерация списка групп от 1 до 25
-let groups =
-      List/fold
-        Natural
-        (List/range 1 25)
-        (List Text)
-        (\(i : Natural) (acc : List Text) -> acc # [makeGroup i])
-        ([] : List Text)
-
--- Тип данных для студента
-let Student = { age : Natural, group : Text, name : Text }
-
--- Функция для создания студента
-let makePerson = \(age : Natural) -> \(groupIndex : Natural) -> \(name : Text) ->
-  { age = age, group = List/index Text groups (groupIndex - 1), name = name }
-
--- Список студентов
-let students =
-      [ makePerson 19 4 "Иванов И.И."
-      , makePerson 18 5 "Петров П.П."
-      , makePerson 18 5 "Сидоров С.С."
-      , makePerson 18 23 "Поспелов Д.Д."
+in  { groups =
+      [ generateGroup 1, generateGroup 2, generateGroup 3, generateGroup 4
+      , generateGroup 5, generateGroup 6, generateGroup 7, generateGroup 8
+      , generateGroup 9, generateGroup 10, generateGroup 11, generateGroup 12
+      , generateGroup 13, generateGroup 14, generateGroup 15, generateGroup 16
+      , generateGroup 17, generateGroup 18, generateGroup 19, generateGroup 20
+      , generateGroup 21, generateGroup 22, generateGroup 23, generateGroup 24
       ]
-
--- Предмет
-let subject = "Конфигурационное управление"
-
-in { groups = groups, students = students, subject = subject }
+    , students =
+      [ { age = 19, group = "ИКБО-4-20", name = "Иванов И.И." }
+      , { age = 18, group = "ИКБО-5-20", name = "Петров П.П." }
+      , { age = 18, group = "ИКБО-5-20", name = "Сидоров С.С." }
+      , { age = 20, group = "ИКБО-23-20", name = "Поспелов Д.Д." }
+      ]
+    , subject = "Конфигурационное управление"
+ }
 ```
 Вывод
-```bash
-{
-  "groups": [
-    "ИКБО-1-23",
-    "ИКБО-2-23",
-    "ИКБО-3-23",
-    "ИКБО-4-23",
-    "ИКБО-5-23",
-    "ИКБО-6-23", 
-    "ИКБО-7-23",
-    "ИКБО-8-23",
-    "ИКБО-9-23",
-    "ИКБО-10-23",
-    "ИКБО-11-23",
-    "ИКБО-12-23", 
-    "ИКБО-13-23",
-    "ИКБО-14-23",
-    "ИКБО-15-23",
-    "ИКБО-16-23",
-    "ИКБО-17-23",
-    "ИКБО-18-23", 
-    "ИКБО-19-23",
-    "ИКБО-20-23",
-    "ИКБО-21-23",
-    "ИКБО-22-23",
-    "ИКБО-23-23",
-    "ИКБО-24-23", 
-    "ИКБО-25-23"
-  ],
-  "students": [
-    { "age": 19,
-      "group": "ИКБО-4-23",
-      "name": "Иванов И.И."
-    },
-    { "age": 18,
-      "group": "ИКБО-5-23",
-      "name": "Петров П.П."
-    },
-    { "age": 18,
-      "group": "ИКБО-5-23",
-      "name": "Сидоров С.С."
-    },
-    { "age": 18,
-      "group": "ИКБО-23-23",
-      "name": "Поспелов Д.Д."
-    }
-  ],
-  "subject": "Конфигурационное управление"
-}
+![image](https://github.com/user-attachments/assets/333386f7-c6d9-4df6-9a68-05ff81a4bc80)
+![image](https://github.com/user-attachments/assets/50e4e543-5f50-4041-aeae-7f5a7693b0c0)
+![image](https://github.com/user-attachments/assets/4b1861e1-da02-48b6-826b-d1dcf295a52b)
 
-}
-```
+
+
 
 ## Задание 3
 Просто добавляем BNF для языка едениц и нулей
