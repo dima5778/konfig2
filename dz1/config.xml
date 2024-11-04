@@ -1,0 +1,5 @@
+<!-- config.xml -->
+<config>
+    <archivePath>fs_image.tar</archivePath>
+    <startScript>start_script.sh</startScript>
+</config>
