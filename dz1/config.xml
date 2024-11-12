@@ -1,0 +1,4 @@
+<config>
+    <virtual_filesystem_path>C:/emulator-shell-os/virtual_files.tar</virtual_filesystem_path>
+    <start_script_path>C:/emulator-shell-os/start_script.sh</start_script_path>
+</config>
