@@ -1,0 +1,14 @@
+digraph G {
+    "bash" -> "/bin/sh";
+    "bash" -> "so:libc.musl-x86_64.so.1";
+    "bash" -> "so:libreadline.so.8";
+    "/bin/sh" -> "busybox=1.35.0-r31";
+    "/bin/sh" -> "yash-binsh-2.53-r2 depends on:";
+    "/bin/sh" -> "yash=2.53-r2";
+    "/bin/sh" -> "dash-binsh-0.5.11.5-r2 depends on:";
+    "/bin/sh" -> "dash=0.5.11.5-r2";
+    "so:libreadline.so.8" -> "so:libc.musl-x86_64.so.1";
+    "so:libreadline.so.8" -> "so:libncursesw.so.6";
+    "so:libncursesw.so.6" -> "ncurses-terminfo-base=6.3_p20221119-r1";
+    "so:libncursesw.so.6" -> "so:libc.musl-x86_64.so.1";
+}
