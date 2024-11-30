@@ -1,0 +1,6 @@
+
+var username := "John"
+var points := 42
+3.14 -> pi;
+
+dict(name: ${username}, score: ${points}, is_active: true)

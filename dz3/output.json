@@ -1,0 +1,13 @@
+{
+    "variables": {
+        "username": "John",
+        "points": 42,
+        "pi": 3.14,
+        "dict": {
+            "name": "John",
+            "score": 42,
+            "is_active": true
+        }
+    },
+    "comments": []
+}

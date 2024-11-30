@@ -1,0 +1,13 @@
+:: Это однострочный комментарий
+var x := 42
+var y := 3.14
+var name := "Test Config"
+var is_enabled := true
+
+:: Использование переменной
+var result := ${x} * 2 + ${y}
+var result1 := ${x} - ${y}
+var result2 := ${x} % ${y}
+
+:: Объявление списка
+list(1, 2, 3, ${x}, "hello")
