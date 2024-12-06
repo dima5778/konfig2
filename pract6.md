@@ -1,4 +1,5 @@
 ## 1 задание 
+# Написать программу на Питоне, которая транслирует граф зависимостей civgraph в makefile в духе примера выше. Для мало знакомых с Питоном используется упрощенный вариант civgraph: civgraph.json.
 ```bash
 import json
 
@@ -36,7 +37,8 @@ if __name__ == '__main__':
 # Вывод
 ![image](https://github.com/user-attachments/assets/b9196f49-06b3-4f5c-8b6a-90cbce4193a5)
 
-# 2 Задание
+## 2 Задание
+# Реализовать вариант трансляции, при котором повторный запуск make не выводит для civgraph на экран уже выполненные "задачи".
 ```bash
 import json
 
@@ -74,7 +76,8 @@ if __name__ == '__main__':
     target = input('Enter the target technology: ')  # Например, mathematics
     generate_makefile(civgraph, target)
 ```
-# 3 Задание 
+## 3 Задание 
+# Добавить цель clean, не забыв и про "животное".
 ```bash
 import json
 import os
