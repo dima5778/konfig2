@@ -74,3 +74,70 @@ if __name__ == '__main__':
     target = input('Enter the target technology: ')  # Например, mathematics
     generate_makefile(civgraph, target)
 ```
+# 3 Задание 
+```bash
+import json
+import os
+
+COMPLETED_TASKS_FILE = "completed_tasks.txt"
+
+def load_completed_tasks():
+    if os.path.exists(COMPLETED_TASKS_FILE):
+        with open(COMPLETED_TASKS_FILE, 'r') as f:
+            return set(f.read().splitlines())
+    return set()
+
+def save_completed_tasks(completed_tasks):
+    with open(COMPLETED_TASKS_FILE, 'w') as f:
+        f.write('\n'.join(completed_tasks))
+
+def clean():
+    if os.path.exists(COMPLETED_TASKS_FILE):
+        os.remove(COMPLETED_TASKS_FILE)
+        print("Cleaned completed tasks.")
+
+def load_civgraph(file):
+    with open(file, 'r') as f:
+        return json.load(f)
+
+def generate_makefile(civgraph, target):
+    visited = set()
+    result = []
+    completed_tasks = load_completed_tasks()
+
+    def visit(tech):
+        if tech in visited or tech in completed_tasks:
+            return
+        visited.add(tech)
+        for dep in civgraph.get(tech, []):
+            visit(dep)
+        result.append(tech)
+
+    visit(target)
+
+    for task in result:
+        if task not in completed_tasks:
+            print(task)
+            completed_tasks.add(task)
+
+    save_completed_tasks(completed_tasks)
+
+if __name__ == '__main__':
+    try:
+        civgraph = load_civgraph('civgraph.json')
+        action = input('Enter action (make/clean): ').strip().lower()
+
+        if action == 'clean':
+            clean()
+        elif action == 'make':
+            target = input('Enter the target technology: ').strip()
+            generate_makefile(civgraph, target)
+        else:
+            print("Invalid action. Please enter 'make' or 'clean'.")
+    except FileNotFoundError:
+        print("Error: The file 'civgraph.json' was not found.")
+    except json.JSONDecodeError:
+        print("Error: The file 'civgraph.json' is not a valid JSON.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+```
